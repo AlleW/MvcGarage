@@ -9,3 +9,4 @@ Add-Migration initial
 Update-database -force -Verbose
 
 -force
+Disa
