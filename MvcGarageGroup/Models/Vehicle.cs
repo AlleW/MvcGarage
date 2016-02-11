@@ -17,6 +17,7 @@ namespace MvcGarageGroup.Models
             public string Color { get; set; }
             public string LicencePlate { get; set; }
             // Test
+            // Test annhuh
         }
    
 }
