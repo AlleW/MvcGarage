@@ -1,0 +1,11 @@
+﻿pakcage manager consol
+--------------------------
+Enable-Migrations
+Enable-Migrations -ContextTypeName <name>.LibraryContext
+Enable-Migrations -ContextTypeName MvcGarage.Models.LibraryContext -force
+
+help add-Migration
+Add-Migration initial
+Update-database -force -Verbose
+
+-force
