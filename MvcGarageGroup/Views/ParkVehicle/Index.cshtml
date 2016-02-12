@@ -1,0 +1,106 @@
+﻿@*@model MvcGarageGroup.Models.ParkedVehicle*@
+@model Tuple<MvcGarageGroup.Models.ParkedVehicle,MvcGarageGroup.Models.Owner,MvcGarageGroup.Models.Vehicle>
+
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>@ViewBag.Message</h2>
+
+<div class="InputForm">
+
+    <div class="inputfields">
+        <div class="inputLabel">
+           @Html.LabelFor(model => model.Item1.VehicleID)
+         </div>
+        <div class="inputDropDown">
+
+            @Html.DropDownList("DropDownV", ((List<MvcGarageGroup.Models.VehicleListItem>)ViewBag.ToComboV).Select(item => new SelectListItem
+            {
+                Value = item.VehicleID.ToString(),
+                Text = item.VehicleAndType.ToString(),
+            }), 
+            new { @class = "inputDropDownList" })
+
+        </div>
+        <div class="inputfields">
+
+            <div class="inputLabel">
+                @Html.LabelFor(model => model.Item3.LicencePlate)
+            </div>
+
+            <div class="inputTextBox">
+                @Html.TextBoxFor(model => model.Item3.LicencePlate)
+            </div>
+            <div class="inputLabel">
+                @Html.LabelFor(model => model.Item3.Color)
+            </div>
+
+            <div class="inputTextBox">
+                @Html.TextBoxFor(model => model.Item3.Color)
+            </div>
+            <div class="inputLabel">
+                @Html.LabelFor(model => model.Item3.VehicleTypeID)
+            </div>
+
+            <div class="inputDropDown">
+                @Html.DropDownList("VehicleType",
+                                            EnumHelper.GetSelectList(typeof(MvcGarage.CommonFunctions.Enumerators.VehicleType)),
+                                   "Select Vehicle Type",
+                                            new { @class = "inputDropDownList" })
+            </div>
+
+        </div>
+
+        <div class="inputLabel">
+            @Html.LabelFor(model => model.Item1.OwnerID)
+        </div>
+        <div class="inputDropDown">
+                @Html.DropDownList("DropDownOwner", ((List<MvcGarageGroup.Models.OwnerListItem>)ViewBag.ToComboOwner).Select(item => new SelectListItem
+                {
+                    Value = item.OwnerID.ToString(),
+                    Text = item.SSNAndName.ToString(),
+                }),
+                new { @class = "inputDropDownList" })
+        </div>
+    </div>
+    @*ViewBag.OwnerModel = new Owner();
+    ViewBag.VehicleModel = new Vehicle();*@
+
+    <div class="inputfields">
+ 
+        <div class="inputLabel">
+            @Html.LabelFor(model => model.Item2.SSN)
+        </div>
+
+        <div class="inputTextBox">
+            @Html.TextBoxFor(model => model.Item2.SSN)
+        </div>
+        <div class="inputLabel">
+            @Html.LabelFor(model => model.Item2.Name)
+        </div>
+
+        <div class="inputTextBox">
+            @Html.TextBoxFor(model => model.Item2.Name)
+        </div>
+
+    </div>
+
+    <div class="inputfields">
+
+        <div class="inputLabel">
+            @Html.LabelFor(model => model.Item1.ParkingSpotID)
+        </div>
+
+        <div class="inputDropDown">
+            @Html.DropDownList("ParkingSlot",
+                                            EnumHelper.GetSelectList(typeof(MvcGarage.CommonFunctions.Enumerators.ParkingSpot)),
+                                   "Select Parking Slot",
+                                            new { @class = "inputDropDownList" })
+        </div>
+    </div>
+
+    </div>
+
+

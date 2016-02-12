@@ -13,6 +13,7 @@ namespace MvcGarageGroup.Models
         {
             [Key]
             public int VehicleID { get; set; }
+            [Display(Name = "Type")]
             public Enumerators.VehicleType VehicleTypeID { get; set; }
             public string Color { get; set; }
             public string LicencePlate { get; set; }
