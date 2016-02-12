@@ -2,7 +2,7 @@
 --------------------------
 Enable-Migrations
 Enable-Migrations -ContextTypeName <name>.LibraryContext
-Enable-Migrations -ContextTypeName MvcGarage.Models.LibraryContext -force
+Enable-Migrations -ContextTypeName MvcGarageGroup.Models.LibraryContext -force
 
 help add-Migration
 Add-Migration initial
