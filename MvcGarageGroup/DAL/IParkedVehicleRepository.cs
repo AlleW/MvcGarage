@@ -11,7 +11,10 @@ namespace MvcGarageGroup.DAL
 
         IEnumerable<ParkedVehicle> GetAllParkedVehiclesOrderByParkingSpot();
 
-        void ParkVehicle(ParkedVehicle parkedVehicle);
+        void AddParkVehicle(ParkedVehicle parkedVehicle);
+        void RemoveParkVehicle(ParkedVehicle parkedVehicle);
+
+        List<ParkingSpotListItem> GetAllVacantParkingSpots();
 
         void Save(); 
     }

@@ -176,6 +176,7 @@
       <DependentUpon>201602120818302_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ParkingSpot.cs" />
     <Compile Include="Models\VehicleListItem.cs" />
     <Compile Include="Models\DbContext.cs" />
     <Compile Include="Models\Owner.cs" />
