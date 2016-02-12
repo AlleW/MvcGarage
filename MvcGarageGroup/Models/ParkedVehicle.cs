@@ -19,6 +19,6 @@ namespace MvcGarageGroup.Models
         public int OwnerID { get; set; }
         public bool Present { get; set; }
         public DateTime StartTime { get; set; }
-        public DateTime StopTime { get; set; }
+        public DateTime? StopTime { get; set; }
     }
 }

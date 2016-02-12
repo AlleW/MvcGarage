@@ -162,6 +162,12 @@
     <None Include="Controllers\AccountController.cs.old" />
     <Compile Include="Controllers\HomeController.cs" />
     <None Include="Controllers\ManageController.cs.old" />
+    <Compile Include="DAL\IOwnerRepository.cs" />
+    <Compile Include="DAL\IParkedVehicleRepository.cs" />
+    <Compile Include="DAL\IVehicleRepository.cs" />
+    <Compile Include="DAL\OwnerRepository.cs" />
+    <Compile Include="DAL\ParkedVehicle.cs" />
+    <Compile Include="DAL\VehicleRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,7 +241,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DAL\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
