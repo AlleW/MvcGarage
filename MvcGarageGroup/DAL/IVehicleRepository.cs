@@ -9,6 +9,8 @@ namespace MvcGarageGroup.DAL
     public interface IVehicleRepository : IDisposable 
     {
         IEnumerable<Vehicle> GetVehicles();
+        List<VehicleListItem> GetAllRegistrationAndType();
+
 
         void Save(); 
     }

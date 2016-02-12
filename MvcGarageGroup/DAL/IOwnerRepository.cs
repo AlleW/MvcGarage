@@ -9,6 +9,8 @@ namespace MvcGarageGroup.DAL
     public interface IOwnerRepository : IDisposable 
     {
         IEnumerable<Owner> GetOwners();
+        List<OwnerListItem> GetSSNAndNames();
+
 
         void Save(); 
     }

@@ -13,9 +13,9 @@ namespace MvcGarageGroup.DAL
         private LibraryContext context = new LibraryContext(ConfigurationManager.ConnectionStrings["MvcGarageConnection"].ConnectionString);
 
         #region Get all ParkedVehicles.
-        public IEnumerable<ParkedVehicle> GetParkedVehicles()
+        public IEnumerable<ParkedVehicle> GetAllParkedVehiclesOrderByParkingSpot()
         {
-            return context.ParkedVehicles;
+            return context.ParkedVehicles.OrderBy(o => o.ParkingSpotID);
         }
         #endregion
 

@@ -1,4 +1,5 @@
-﻿using MvcGarageGroup.Models;
+﻿using MvcGarage.CommonFunctions;
+using MvcGarageGroup.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,6 +19,23 @@ namespace MvcGarageGroup.DAL
             return context.Vehicles;
         }
         #endregion
+
+        #region Get all vehicles and color as list for listbox.
+        public List<VehicleListItem> GetAllRegistrationAndType()
+        {
+            return (from row in context.Vehicles
+                    select new VehicleListItem
+                    {
+                        VehicleID = row.VehicleID,
+                        VehicleAndType = row.LicencePlate + " (" + ((Enumerators.VehicleType)row.VehicleTypeID).ToString() + ")"
+                    }).ToList();
+        }
+        #endregion
+
+        //EnumDisplayStatus enumDisplayStatus = (EnumDisplayStatus)value;
+        //string stringValue = enumDisplayStatus.ToString();
+
+
 
         public void Save()
         {

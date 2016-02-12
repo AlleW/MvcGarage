@@ -9,7 +9,7 @@ namespace MvcGarageGroup.DAL
     public interface IParkedVehicleRepository : IDisposable 
     {
 
-        IEnumerable<ParkedVehicle> GetParkedVehicles();
+        IEnumerable<ParkedVehicle> GetAllParkedVehiclesOrderByParkingSpot();
 
         void ParkVehicle(ParkedVehicle parkedVehicle);
 
