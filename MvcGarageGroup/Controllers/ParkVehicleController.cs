@@ -40,9 +40,14 @@ namespace MvcGarageGroup.Controllers
         [HttpPost]
         public ActionResult Save(ParkedVehicle Item1, Owner Item2, Vehicle Item3)
         {
+            if (Item1.VehicleID == -1)
+            {
+
+            }
             //var a = t.Item1.VehicleID;
             //return View();
-            return Content("Test Spara !!! " + Item3.LicencePlate);
+            //return Content("Test Spara !!! " + Item3.LicencePlate);
+            return Content("Test Spara !!! " + Item1.VehicleID + " " + Item1.OwnerID + " " + (int)Item3.VehicleTypeID + " " + (int)Item1.ParkingSpotID);
         }
     }
 }
