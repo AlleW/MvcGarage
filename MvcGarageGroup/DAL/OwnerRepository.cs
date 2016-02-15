@@ -32,6 +32,14 @@ namespace MvcGarageGroup.DAL
         }
         #endregion
 
+        public int AddOwner(Owner owner)
+        {
+            context.Owners.Add(owner);
+            Save();
+
+            // Return the VehicleID of the recently added vehicle
+            return context.Owners.Max(o => o.OwnerID);
+        }
 
         public Owner GetOwnerByOwnerID(int ownerID)
         {

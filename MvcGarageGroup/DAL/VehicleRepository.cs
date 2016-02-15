@@ -45,6 +45,16 @@ namespace MvcGarageGroup.DAL
             return context.Vehicles.FirstOrDefault(o => o.LicencePlate == licencePlate);
         }
 
+
+        public int AddVehicle(Vehicle vehicle)
+        {
+            context.Vehicles.Add(vehicle);
+            Save();
+
+            // Return the VehicleID of the recently added vehicle
+            return context.Vehicles.Max(o => o.VehicleID);
+        }
+
         public void DeleteVehicle(Vehicle vehicle)
         {
             context.Vehicles.Remove(vehicle);

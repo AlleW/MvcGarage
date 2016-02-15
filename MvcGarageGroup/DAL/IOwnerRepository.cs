@@ -15,6 +15,8 @@ namespace MvcGarageGroup.DAL
         Owner GetOwnerBySSN(string ssn);
         void DeleteOwner(Owner owner);
 
+        int AddOwner(Owner owner);
+
         void Save(); 
     }
 }

@@ -15,6 +15,8 @@ namespace MvcGarageGroup.DAL
         Vehicle GetVehicleByLicencePlate(string licencePlate);
         void DeleteVehicle(Vehicle vehicle);
 
+        int AddVehicler(Vehicle vehicle);
+
         void Save(); 
     }
 }
