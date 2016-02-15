@@ -16,7 +16,20 @@ namespace MvcGarageGroup.DAL
         #region Get all ParkedVehicles.
         public IEnumerable<ParkedVehicle> GetAllParkedVehiclesOrderByParkingSpot()
         {
-            return context.ParkedVehicles.OrderBy(o => o.ParkingSpotID);
+            var listOfParkedVehicles = context.ParkedVehicles.OrderBy(o => o.ParkingSpotID);
+
+            // Include Vehicle and Owner objects into each ParkedVehicle
+            foreach (var parkedVehicle in listOfParkedVehicles) {
+                
+                // Get owner by OwnerID
+                parkedVehicle.Owner = new OwnerRepository().GetOwnerByOwnerID(parkedVehicle.OwnerID);
+
+                // Get Vehicle by VehicleID
+                parkedVehicle.Vehicle = new VehicleRepository().GetVehicleByVehicleID(parkedVehicle.VehicleID);
+            }
+
+            // return modifed object
+            return listOfParkedVehicles;
         }
         #endregion
 
@@ -46,6 +59,7 @@ namespace MvcGarageGroup.DAL
 
             return ListOfallParkingSpots.Except(listOfOccupiedParkingSpots).ToList();
         }
+
 
 
 

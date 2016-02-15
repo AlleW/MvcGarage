@@ -11,6 +11,9 @@ namespace MvcGarageGroup.DAL
         IEnumerable<Vehicle> GetVehicles();
         List<VehicleListItem> GetAllRegistrationAndType();
 
+        Vehicle GetVehicleByVehicleID(int vehicleID);
+        Vehicle GetVehicleByLicencePlate(string licencePlate);
+        void DeleteVehicle(Vehicle vehicle);
 
         void Save(); 
     }

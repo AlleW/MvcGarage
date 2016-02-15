@@ -35,7 +35,21 @@ namespace MvcGarageGroup.DAL
         //EnumDisplayStatus enumDisplayStatus = (EnumDisplayStatus)value;
         //string stringValue = enumDisplayStatus.ToString();
 
+        public Vehicle GetVehicleByVehicleID(int vehicleID)
+        {
+            return context.Vehicles.FirstOrDefault(o => o.VehicleID == vehicleID);
+        }
 
+        public Vehicle GetVehicleByLicencePlate(string licencePlate)
+        {
+            return context.Vehicles.FirstOrDefault(o => o.LicencePlate == licencePlate);
+        }
+
+        public void DeleteVehicle(Vehicle vehicle)
+        {
+            context.Vehicles.Remove(vehicle);
+            Save();
+        }
 
         public void Save()
         {

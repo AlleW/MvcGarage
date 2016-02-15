@@ -33,6 +33,23 @@ namespace MvcGarageGroup.DAL
         #endregion
 
 
+        public Owner GetOwnerByOwnerID(int ownerID)
+        {
+            return context.Owners.FirstOrDefault(o => o.OwnerID == ownerID);
+        }
+
+        public Owner GetOwnerBySSN(string ssn)
+        {
+            return context.Owners.FirstOrDefault(o => o.SSN == ssn);
+        }
+
+        public void DeleteOwner(Owner owner)
+        {
+            context.Owners.Remove(owner);
+            Save();
+        }
+
+
         public void Save()
         {
             context.SaveChanges();
