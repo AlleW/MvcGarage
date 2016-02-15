@@ -11,6 +11,9 @@ namespace MvcGarageGroup.DAL
         IEnumerable<Owner> GetOwners();
         List<OwnerListItem> GetSSNAndNames();
 
+        Owner GetOwnerByOwnerID(int ownerID);
+        Owner GetOwnerBySSN(string ssn);
+        void DeleteOwner(Owner owner);
 
         void Save(); 
     }

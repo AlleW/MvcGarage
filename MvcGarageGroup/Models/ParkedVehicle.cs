@@ -23,5 +23,10 @@ namespace MvcGarageGroup.Models
         public bool Present { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime? StopTime { get; set; }
+
+        [NotMapped]
+        public Owner Owner { get; set; }
+        [NotMapped]
+        public Vehicle Vehicle { get; set; }
     }
 }
