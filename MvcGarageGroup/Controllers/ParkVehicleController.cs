@@ -27,5 +27,22 @@ namespace MvcGarageGroup.Controllers
             return View();
             //return Content("Test mata in !!");
         }
+        [HttpGet]
+        public ActionResult Save()
+        {
+            ParkedVehicle parkedVehicle = new ParkedVehicle();
+            Owner owner = new Owner();
+            Vehicle vehicle = new Vehicle();
+            return View(new Tuple<ParkedVehicle, Owner, Vehicle>(parkedVehicle, owner, vehicle));
+        }
+
+                // GET: ParkVehicle
+        [HttpPost]
+        public ActionResult Save(ParkedVehicle Item1, Owner Item2, Vehicle Item3)
+        {
+            //var a = t.Item1.VehicleID;
+            //return View();
+            return Content("Test Spara !!! " + Item3.LicencePlate);
+        }
     }
 }

@@ -186,6 +186,7 @@
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Content Include="Content\Garage.css" />
     <Content Include="Views\ParkVehicle\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -4,103 +4,115 @@
 
 @{
     ViewBag.Title = "View";
+    AjaxOptions options = new AjaxOptions { };
 }
 
 <h2>@ViewBag.Message</h2>
-
+@using (Ajax.BeginForm("Save", "ParkVehicle", options, htmlAttributes: new { @id = "update-form" }))
+{
 <div class="InputForm">
+ 
+        <div class="inputfields">
+            <div class="inputLabel">
+                @Html.LabelFor(model => model.Item1.VehicleID)
+            </div>
+            <div class="inputDropDown">
 
-    <div class="inputfields">
-        <div class="inputLabel">
-           @Html.LabelFor(model => model.Item1.VehicleID)
-         </div>
-        <div class="inputDropDown">
-
-            @Html.DropDownList("DropDownV", ((List<MvcGarageGroup.Models.VehicleListItem>)ViewBag.ToComboV).Select(item => new SelectListItem
+                @Html.DropDownList("DropDownV", ((List<MvcGarageGroup.Models.VehicleListItem>)ViewBag.ToComboV).Select(item => new SelectListItem
             {
                 Value = item.VehicleID.ToString(),
                 Text = item.VehicleAndType.ToString(),
-            }), 
+            }),
             new { @class = "inputDropDownList" })
 
-        </div>
-        <div class="inputfields">
+            </div>
+            <div class="inputfields">
 
-            <div class="inputLabel">
-                @Html.LabelFor(model => model.Item3.LicencePlate)
-            </div>
+                <div class="inputLabel">
+                    @Html.LabelFor(model => model.Item3.LicencePlate)
+                </div>
 
-            <div class="inputTextBox">
-                @Html.TextBoxFor(model => model.Item3.LicencePlate)
-            </div>
-            <div class="inputLabel">
-                @Html.LabelFor(model => model.Item3.Color)
-            </div>
+                <div class="inputTextBox">
+                    @Html.TextBoxFor(model => model.Item3.LicencePlate)
+                </div>
+                <div class="inputLabel">
+                    @Html.LabelFor(model => model.Item3.Color)
+                </div>
 
-            <div class="inputTextBox">
-                @Html.TextBoxFor(model => model.Item3.Color)
-            </div>
-            <div class="inputLabel">
-                @Html.LabelFor(model => model.Item3.VehicleTypeID)
-            </div>
+                <div class="inputTextBox">
+                    @Html.TextBoxFor(model => model.Item3.Color)
+                </div>
+                <div class="inputLabel">
+                    @Html.LabelFor(model => model.Item3.VehicleTypeID)
+                </div>
 
-            <div class="inputDropDown">
-                @Html.DropDownList("VehicleType",
+                <div class="inputDropDown">
+                    @Html.DropDownList("VehicleType",
                                             EnumHelper.GetSelectList(typeof(MvcGarage.CommonFunctions.Enumerators.VehicleType)),
                                    "Select Vehicle Type",
                                             new { @class = "inputDropDownList" })
+                </div>
+
             </div>
 
-        </div>
-
-        <div class="inputLabel">
-            @Html.LabelFor(model => model.Item1.OwnerID)
-        </div>
-        <div class="inputDropDown">
+            <div class="inputLabel">
+                @Html.LabelFor(model => model.Item1.OwnerID)
+            </div>
+            <div class="inputDropDown">
                 @Html.DropDownList("DropDownOwner", ((List<MvcGarageGroup.Models.OwnerListItem>)ViewBag.ToComboOwner).Select(item => new SelectListItem
                 {
                     Value = item.OwnerID.ToString(),
                     Text = item.SSNAndName.ToString(),
                 }),
                 new { @class = "inputDropDownList" })
+            </div>
         </div>
-    </div>
-    @*ViewBag.OwnerModel = new Owner();
-    ViewBag.VehicleModel = new Vehicle();*@
+        @*ViewBag.OwnerModel = new Owner();
+            ViewBag.VehicleModel = new Vehicle();*@
 
-    <div class="inputfields">
- 
-        <div class="inputLabel">
-            @Html.LabelFor(model => model.Item2.SSN)
-        </div>
+        <div class="inputfields">
 
-        <div class="inputTextBox">
-            @Html.TextBoxFor(model => model.Item2.SSN)
-        </div>
-        <div class="inputLabel">
-            @Html.LabelFor(model => model.Item2.Name)
-        </div>
+            <div class="inputLabel">
+                @Html.LabelFor(model => model.Item2.SSN)
+            </div>
 
-        <div class="inputTextBox">
-            @Html.TextBoxFor(model => model.Item2.Name)
-        </div>
+            <div class="inputTextBox">
+                @Html.TextBoxFor(model => model.Item2.SSN)
+            </div>
+            <div class="inputLabel">
+                @Html.LabelFor(model => model.Item2.Name)
+            </div>
 
-    </div>
+            <div class="inputTextBox">
+                @Html.TextBoxFor(model => model.Item2.Name)
+            </div>
 
-    <div class="inputfields">
-
-        <div class="inputLabel">
-            @Html.LabelFor(model => model.Item1.ParkingSpotID)
         </div>
 
-        <div class="inputDropDown">
-            @Html.DropDownList("ParkingSlot",
+        <div class="inputfields">
+
+            <div class="inputLabel">
+                @Html.LabelFor(model => model.Item1.ParkingSpotID)
+            </div>
+
+            <div class="inputDropDown">
+                @Html.DropDownList("ParkingSlot",
                                             EnumHelper.GetSelectList(typeof(MvcGarage.CommonFunctions.Enumerators.ParkingSpot)),
                                    "Select Parking Slot",
                                             new { @class = "inputDropDownList" })
+            </div>
         </div>
-    </div>
 
-    </div>
 
+    <div class="CommitField">
+        <button type="submit" class="button">Save</button>
+     </div>
+
+            @*<div class="CommitField">
+                    @Html.ActionLink("Save", "Save", "ParkVehicle", new { @class = "btn btn-primary", @style = "color:white" })
+
+                </div>*@
+   
+       </div>
+   }
 
