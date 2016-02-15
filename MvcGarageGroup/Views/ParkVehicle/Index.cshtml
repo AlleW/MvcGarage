@@ -17,8 +17,7 @@
                 @Html.LabelFor(model => model.Item1.VehicleID)
             </div>
             <div class="inputDropDown">
-
-                @Html.DropDownList("DropDownV", ((List<MvcGarageGroup.Models.VehicleListItem>)ViewBag.ToComboV).Select(item => new SelectListItem
+                @Html.DropDownListFor(model => model.Item1.VehicleID, ((List<MvcGarageGroup.Models.VehicleListItem>)ViewBag.ToComboV).Select(item => new SelectListItem
             {
                 Value = item.VehicleID.ToString(),
                 Text = item.VehicleAndType.ToString(),
@@ -47,9 +46,8 @@
                 </div>
 
                 <div class="inputDropDown">
-                    @Html.DropDownList("VehicleType",
+                    @Html.DropDownListFor(model => model.Item3.VehicleTypeID,
                                             EnumHelper.GetSelectList(typeof(MvcGarage.CommonFunctions.Enumerators.VehicleType)),
-                                   "Select Vehicle Type",
                                             new { @class = "inputDropDownList" })
                 </div>
 
@@ -59,7 +57,7 @@
                 @Html.LabelFor(model => model.Item1.OwnerID)
             </div>
             <div class="inputDropDown">
-                @Html.DropDownList("DropDownOwner", ((List<MvcGarageGroup.Models.OwnerListItem>)ViewBag.ToComboOwner).Select(item => new SelectListItem
+                @Html.DropDownListFor(model => model.Item1.OwnerID, ((List<MvcGarageGroup.Models.OwnerListItem>)ViewBag.ToComboOwner).Select(item => new SelectListItem
                 {
                     Value = item.OwnerID.ToString(),
                     Text = item.SSNAndName.ToString(),
@@ -96,11 +94,36 @@
             </div>
 
             <div class="inputDropDown">
-                @Html.DropDownList("ParkingSlot",
+                @*@Html.DropDownListFor(model => model.Item1.ParkingSpotID,
                                             EnumHelper.GetSelectList(typeof(MvcGarage.CommonFunctions.Enumerators.ParkingSpot)),
-                                   "Select Parking Slot",
-                                            new { @class = "inputDropDownList" })
+                                            new { @class = "inputDropDownList" })*@
+                @Html.DropDownListFor(model => model.Item1.ParkingSpotID, ((List<MvcGarageGroup.Models.ParkingSpotListItem>)ViewBag.ToVacantParkingSpots).Select(item => new SelectListItem
+                {
+                    Value = item.ParkingSpotID.ToString(),
+                    Text = item.Name.ToString(),
+                }),
+                new { @class = "inputDropDownList" })
+
+   
             </div>
+
+            <div class="inputLabel">
+                @Html.LabelFor(model => model.Item1.StartTime)
+            </div>
+
+            <div class="inputTextBox">
+                @Html.TextBoxFor(model => model.Item1.StartTime, new { Value = DateTime.Now })
+            </div>
+
+            <div class="inputLabel">
+                @Html.LabelFor(model => model.Item1.StopTime)
+            </div>
+
+            <div class="inputTextBox">
+                @Html.TextBoxFor(model => model.Item1.StopTime, new { Value = DateTime.Now.AddHours(1) })
+            </div>
+
+
         </div>
 
 

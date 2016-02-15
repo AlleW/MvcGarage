@@ -21,7 +21,9 @@ namespace MvcGarageGroup.Controllers
 
             ViewBag.ToComboOwner = new OwnerRepository().GetSSNAndNames();
             ((List<OwnerListItem>)ViewBag.ToComboOwner).Insert(0, new OwnerListItem { OwnerID = -1, SSNAndName = "<Not in list>" });
-            
+
+            ViewBag.ToVacantParkingSpots = new ParkedVehicleRepository().GetAllVacantParkingSpots();
+
             ViewBag.Message = "Park your Vehicle";
 
             return View();
@@ -40,9 +42,25 @@ namespace MvcGarageGroup.Controllers
         [HttpPost]
         public ActionResult Save(ParkedVehicle Item1, Owner Item2, Vehicle Item3)
         {
-            //var a = t.Item1.VehicleID;
-            //return View();
-            return Content("Test Spara !!! " + Item3.LicencePlate);
+
+
+            if (Item1.VehicleID == -1)
+            {
+                var a = new VehicleRepository().AddVehicle(Item3);
+                Item1.VehicleID = a;
+
+            }
+
+            if (Item1.OwnerID == -1)
+            {
+                var id = new OwnerRepository().AddOwner(Item2);
+                Item1.OwnerID = id;
+
+            }
+
+            new ParkedVehicleRepository().AddParkVehicle(Item1);
+
+            return Content("Test Spara !!! " + Item1.VehicleID + " " + Item1.OwnerID + " " + (int)Item3.VehicleTypeID + " " + (int)Item1.ParkingSpotID);
         }
     }
 }
