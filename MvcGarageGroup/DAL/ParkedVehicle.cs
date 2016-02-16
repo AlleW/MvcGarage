@@ -19,8 +19,9 @@ namespace MvcGarageGroup.DAL
             var listOfParkedVehicles = context.ParkedVehicles.OrderBy(o => o.ParkingSpotID);
 
             // Include Vehicle and Owner objects into each ParkedVehicle
-            foreach (var parkedVehicle in listOfParkedVehicles) {
-                
+            foreach (var parkedVehicle in listOfParkedVehicles)
+            {
+
                 // Get owner by OwnerID
                 parkedVehicle.Owner = new OwnerRepository().GetOwnerByOwnerID(parkedVehicle.OwnerID);
 
@@ -48,15 +49,15 @@ namespace MvcGarageGroup.DAL
         {
             var ListOfallParkingSpots = Enum.GetValues(typeof(Enumerators.ParkingSpot))
                                                 .Cast<Enumerators.ParkingSpot>()
-                                                .Select(c => new ParkingSpotListItem() { ParkingSpotID  = (int)c, Name = c.ToString() })
+                                                .Select(c => new ParkingSpotListItem() { ParkingSpotID = (int)c, Name = c.ToString() })
                                                 .ToList();
 
             var listOfOccupiedParkingSpots = (from row in context.ParkedVehicles
-                                                select new ParkingSpotListItem
-                                                {
-                                                    ParkingSpotID = (int)row.ParkingSpotID,
-                                                    Name = ((Enumerators.ParkingSpot)row.ParkingSpotID).ToString()
-                                                }).ToList();
+                                              select new ParkingSpotListItem
+                                              {
+                                                  ParkingSpotID = (int)row.ParkingSpotID,
+                                                  Name = ((Enumerators.ParkingSpot)row.ParkingSpotID).ToString()
+                                              }).ToList();
 
             foreach (var item in listOfOccupiedParkingSpots)
             {
@@ -68,12 +69,12 @@ namespace MvcGarageGroup.DAL
             //           ListOfallParkingSpots.RemoveAll(o => o == listOfOccupiedParkingSpots.Where(i => i.ParkingSpotID == 101));
 
             //var qwerty = listOfOccupiedParkingSpots.FirstOrDefault(i => i.ParkingSpotID == 101);
-        //    List<ParkingSpotListItem> aqqq = ListOfallParkingSpots.RemoveAll(o => listOfOccupiedParkingSpots.FirstOrDefault(i => i.ParkingSpotID == 101));
+            //    List<ParkingSpotListItem> aqqq = ListOfallParkingSpots.RemoveAll(o => listOfOccupiedParkingSpots.FirstOrDefault(i => i.ParkingSpotID == 101));
 
             //var a = listOfOccupiedParkingSpots.Except(ListOfallParkingSpots).ToList();
             //var a = ListOfallParkingSpots.Except(listOfOccupiedParkingSpots).ToList();
-           // var b = 
-           // List<ParkingSpotListItem> b = ListOfallParkingSpots.RemoveAll(o => listOfOccupiedParkingSpots.Contains(o).);
+            // var b = 
+            // List<ParkingSpotListItem> b = ListOfallParkingSpots.RemoveAll(o => listOfOccupiedParkingSpots.Contains(o).);
             return ListOfallParkingSpots;
         }
 
