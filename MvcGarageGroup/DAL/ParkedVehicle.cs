@@ -61,8 +61,8 @@ namespace MvcGarageGroup.DAL
 
             foreach (var item in listOfOccupiedParkingSpots)
             {
-                var i = ListOfallParkingSpots.Where(o => o.ParkingSpotID == item.ParkingSpotID);
-                ListOfallParkingSpots.RemoveAll(i);
+                ParkingSpotListItem i = ListOfallParkingSpots.FirstOrDefault(o => o.ParkingSpotID == item.ParkingSpotID);
+                ListOfallParkingSpots.Remove(i);
             }
 
             //var Alle = ListOfallParkingSpots.RemoveAll(o => o == listOfOccupiedParkingSpots.Where(i => i.ParkingSpotID == 101));
