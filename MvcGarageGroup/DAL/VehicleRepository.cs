@@ -23,11 +23,19 @@ namespace MvcGarageGroup.DAL
         #region Get all vehicles and color as list for listbox.
         public List<VehicleListItem> GetAllRegistrationAndType()
         {
+            //return (from row in context.Vehicles
+            //        select new VehicleListItem
+            //        {
+            //            VehicleID = row.VehicleID,
+            //            VehicleAndType = row.LicencePlate + " (" + ((Enumerators.VehicleType)row.VehicleTypeID).ToString() + ")"
+            //        }).ToList();
+
             return (from row in context.Vehicles
+                    join vtype in context.VehicleTypes on row.VehicleTypeID equals vtype.VehicleTypeID
                     select new VehicleListItem
                     {
                         VehicleID = row.VehicleID,
-                        VehicleAndType = row.LicencePlate + " (" + ((Enumerators.VehicleType)row.VehicleTypeID).ToString() + ")"
+                        VehicleAndType = row.LicencePlate + " (" + vtype.Name + ")"
                     }).ToList();
         }
         #endregion
