@@ -10,7 +10,7 @@ namespace MvcGarageGroup.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(MvcGarageGroup.Models.LibraryContext context)
@@ -37,7 +37,6 @@ namespace MvcGarageGroup.Migrations
             );
 
             context.SaveChanges();
-
         }
     }
 }

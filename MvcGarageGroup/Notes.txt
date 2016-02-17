@@ -4,8 +4,12 @@ Enable-Migrations
 Enable-Migrations -ContextTypeName <name>.LibraryContext
 Enable-Migrations -ContextTypeName MvcGarageGroup.Models.LibraryContext -force
 
+If done before !!!!
+Enable-Migrations -Force
+
+
 help add-Migration
-Add-Migration initial
+Add-Migration initial -Force
 Update-database -force -Verbose
 
 -force
