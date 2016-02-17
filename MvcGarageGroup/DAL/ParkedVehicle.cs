@@ -65,16 +65,7 @@ namespace MvcGarageGroup.DAL
                 ListOfallParkingSpots.Remove(i);
             }
 
-            //var Alle = ListOfallParkingSpots.RemoveAll(o => o == listOfOccupiedParkingSpots.Where(i => i.ParkingSpotID == 101));
-            //           ListOfallParkingSpots.RemoveAll(o => o == listOfOccupiedParkingSpots.Where(i => i.ParkingSpotID == 101));
 
-            //var qwerty = listOfOccupiedParkingSpots.FirstOrDefault(i => i.ParkingSpotID == 101);
-            //    List<ParkingSpotListItem> aqqq = ListOfallParkingSpots.RemoveAll(o => listOfOccupiedParkingSpots.FirstOrDefault(i => i.ParkingSpotID == 101));
-
-            //var a = listOfOccupiedParkingSpots.Except(ListOfallParkingSpots).ToList();
-            //var a = ListOfallParkingSpots.Except(listOfOccupiedParkingSpots).ToList();
-            // var b = 
-            // List<ParkingSpotListItem> b = ListOfallParkingSpots.RemoveAll(o => listOfOccupiedParkingSpots.Contains(o).);
             return ListOfallParkingSpots;
         }
 
