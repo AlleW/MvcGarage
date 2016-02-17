@@ -14,14 +14,18 @@ namespace MvcGarageGroup.Models
     {
         [Key]
         public int ParkedVehicleID { get; set; }
+
         [Display(Name = "Vehicle")]
         [ForeignKey("Vehicle")]
-        public int VehicleID { get; set; }
+        public virtual int VehicleID { get; set; }
+
         [Display(Name = "ParkingSpot")]
         public Enumerators.ParkingSpot ParkingSpotID { get; set; }
+
         [Display(Name = "Owner")]
         [ForeignKey("Owner")]
-        public int OwnerID { get; set; }
+        public virtual int OwnerID { get; set; }
+
         public bool Present { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime? StopTime { get; set; }
