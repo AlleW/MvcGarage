@@ -4,7 +4,7 @@ Enable-Migrations
 Enable-Migrations -ContextTypeName <name>.LibraryContext
 Enable-Migrations -ContextTypeName MvcGarageGroup.Models.LibraryContext -force
 
-If done before !!!!
+If done before !!!! Obs !!! overwrites SEED
 Enable-Migrations -Force
 
 
