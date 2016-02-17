@@ -1,5 +1,6 @@
 namespace MvcGarageGroup.Migrations
 {
+    using MvcGarageGroup.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -27,7 +28,16 @@ namespace MvcGarageGroup.Migrations
             //    );
             //
 
-            //Alle
+            context.VehicleTypes.AddOrUpdate(
+            new VehicleType { Name = "Car" },
+            new VehicleType { Name = "Motorcycle" },
+            new VehicleType { Name = "Van" },
+            new VehicleType { Name = "Truck" },
+            new VehicleType { Name = "Lorry" }
+            );
+
+            context.SaveChanges();
+
         }
     }
 }
