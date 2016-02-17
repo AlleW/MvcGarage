@@ -165,9 +165,11 @@
     <Compile Include="Controllers\ParkVehicleController.cs" />
     <Compile Include="DAL\IOwnerRepository.cs" />
     <Compile Include="DAL\IParkedVehicleRepository.cs" />
+    <Compile Include="DAL\IVehicleTypeRepository.cs" />
     <Compile Include="DAL\IVehicleRepository.cs" />
     <Compile Include="DAL\OwnerRepository.cs" />
     <Compile Include="DAL\ParkedVehicle.cs" />
+    <Compile Include="DAL\VehicleTypeRepository.cs" />
     <Compile Include="DAL\VehicleRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,6 +180,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ParkingSpot.cs" />
+    <Compile Include="Models\VehicleTypeListItem.cs" />
     <Compile Include="Models\VehicleListItem.cs" />
     <Compile Include="Models\DbContext.cs" />
     <Compile Include="Models\Owner.cs" />

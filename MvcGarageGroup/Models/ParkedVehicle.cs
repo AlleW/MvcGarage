@@ -30,9 +30,12 @@ namespace MvcGarageGroup.Models
         public DateTime StartTime { get; set; }
         public DateTime? StopTime { get; set; }
 
-        [NotMapped]
-        public Owner Owner { get; set; }
-        [NotMapped]
-        public Vehicle Vehicle { get; set; }
+        //[NotMapped]
+        //public Owner Owner { get; set; }
+        //[NotMapped]
+        //public Vehicle Vehicle { get; set; }
+
+        public virtual Vehicle Vehicle { get; set; }
+        public virtual Owner Owner { get; set; }
     }
 }

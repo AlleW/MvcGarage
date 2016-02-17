@@ -1,5 +1,5 @@
 ﻿@*@model MvcGarageGroup.Models.ParkedVehicle*@
-@model Tuple<MvcGarageGroup.Models.ParkedVehicle,MvcGarageGroup.Models.Owner,MvcGarageGroup.Models.Vehicle>
+@model Tuple<MvcGarageGroup.Models.ParkedVehicle, MvcGarageGroup.Models.Owner, MvcGarageGroup.Models.Vehicle>
 
 
 @{
@@ -44,11 +44,17 @@
                 <div class="inputLabel">
                     @Html.LabelFor(model => model.Item3.VehicleTypeID)
                 </div>
-
+       
                 <div class="inputDropDown">
-                    @Html.DropDownListFor(model => model.Item3.VehicleTypeID,
+                    @*@Html.DropDownListFor(model => model.Item3.VehicleTypeID,
                                             EnumHelper.GetSelectList(typeof(MvcGarage.CommonFunctions.Enumerators.VehicleType)),
-                                            new { @class = "inputDropDownList" })
+                                            new { @class = "inputDropDownList" })*@
+                    @Html.DropDownListFor(model => model.Item3.VehicleTypeID, ((List<MvcGarageGroup.Models.VehicleTypeListItem>)ViewBag.ToComboVehicleType).Select(item => new SelectListItem
+                {
+                    Value = item.VehicleTypeID.ToString(),
+                    Text = item.Name.ToString(),
+                }),
+                new { @class = "inputDropDownList" })
                 </div>
 
             </div>

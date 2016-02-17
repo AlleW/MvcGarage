@@ -21,6 +21,8 @@ namespace MvcGarageGroup.Models
 
             public string Color { get; set; }
             public string LicencePlate { get; set; }
+
+            public virtual VehicleType VehicleType { get; set; }
         }
    
 }

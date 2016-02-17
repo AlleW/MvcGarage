@@ -22,6 +22,9 @@ namespace MvcGarageGroup.Controllers
             ViewBag.ToComboOwner = new OwnerRepository().GetSSNAndNames();
             ((List<OwnerListItem>)ViewBag.ToComboOwner).Insert(0, new OwnerListItem { OwnerID = -1, SSNAndName = "<Not in list>" });
 
+            ViewBag.ToComboVehicleType = new VehicleTypeRepository().GetAll();
+            
+
             ViewBag.ToVacantParkingSpots = new ParkedVehicleRepository().GetAllVacantParkingSpots();
 
             ViewBag.Message = "Park your Vehicle";
