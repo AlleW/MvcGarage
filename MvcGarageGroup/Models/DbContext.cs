@@ -14,6 +14,7 @@ namespace MvcGarageGroup.Models
         public DbSet<Owner> Owners { get; set; }
         public DbSet<ParkedVehicle> ParkedVehicles { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<VehicleType> VehicleTypes { get; set; }
 
         public LibraryContext(string connString) : base(connString)
         {

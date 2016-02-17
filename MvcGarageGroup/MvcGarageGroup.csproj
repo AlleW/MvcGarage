@@ -184,6 +184,7 @@
     <Compile Include="Models\ParkedVehicle.cs" />
     <Compile Include="Models\OwnerListItem.cs" />
     <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Models\VehicleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Content Include="Content\Garage.css" />

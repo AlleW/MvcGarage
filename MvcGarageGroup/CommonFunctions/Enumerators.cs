@@ -7,7 +7,7 @@ namespace MvcGarage.CommonFunctions
 {
     public class Enumerators
     {
-        public enum VehicleType
+        public enum VehicleTypeEnum
         {
             Car = 1,
             Motorcycle =2,
