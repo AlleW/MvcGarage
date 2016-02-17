@@ -8,7 +8,7 @@ using System.Web;
 
 namespace MvcGarageGroup.Models
 {
-    
+    //Dummy comment
     [Table("ParkedVehicle")]
     public class ParkedVehicle
     {
