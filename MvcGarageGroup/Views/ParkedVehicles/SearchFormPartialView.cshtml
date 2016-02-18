@@ -1,0 +1,22 @@
+﻿@model MvcGarageGroup.Models.SearchForm
+@{
+    ViewBag.Title = "View";
+    AjaxOptions options = new AjaxOptions { };
+}
+
+@using (Ajax.BeginForm("SearchFormPartialView_Update", "ParkedVehicle", options, htmlAttributes: new { @id = "update-form" }))
+{
+    <div class="inputfields">
+        @Html.LabelFor(model => model.LicensePlate, new { @class = "SearchFormLabel" })
+        @Html.TextAreaFor(model => model.LicensePlate, new { @class = "SearchFormTextBox" })
+        @Html.LabelFor(model => model.VehicleTypeID, new { @class = "SearchFormLabel" })
+        @*@Html.TextAreaFor(model => model.VehicleTypeID, new { @class = "SearchFormTextBox" })*@
+        @Html.DropDownListFor(model => model.VehicleTypeID, ((List<MvcGarageGroup.Models.VehicleTypeListItem>)ViewBag.ToComboVehicleType).Select(item => new SelectListItem
+                {
+                    Value = item.VehicleTypeID.ToString(),
+                    Text = item.Name.ToString(),
+                }),
+                new { @class = "SearchFormTextBox" })
+        <button type="submit" class="SearchFormButton">Search</button>
+    </div>
+}

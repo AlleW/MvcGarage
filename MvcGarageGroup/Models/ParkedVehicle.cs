@@ -29,17 +29,17 @@ namespace MvcGarageGroup.Models
         public bool Present { get; set; }
 
         [Display(Name = "Parked")]
-        [MvcGarageGroup.CommonFunctions.MyAwesomeDateValidation(ErrorMessage = "You were born in another dimension")]
+        [MvcGarageGroup.CommonFunctions.MyAwesomeDateValidation(ErrorMessage = "Invalid date !")]
         public DateTime StartTime { get; set; }
 
         [Display(Name = "Exit Time")]
-        [MvcGarageGroup.CommonFunctions.MyAwesomeDateValidation(ErrorMessage = "You were born in another dimension")]
+        [MvcGarageGroup.CommonFunctions.MyAwesomeDateValidation(ErrorMessage = "Invalid date !")]
         public DateTime? StopTime { get; set; }
 
         //[NotMapped]
         //public Owner Owner { get; set; }
         //[NotMapped]
-        //public Vehicle Vehicle { get; set; }
+        //public SearchForm SearchForm { get; set; }
 
         public virtual Vehicle Vehicle { get; set; }
         public virtual Owner Owner { get; set; }

@@ -19,9 +19,45 @@ namespace MvcGarageGroup.Controllers
         public ActionResult Index()
         {
            // var parkedVehicles = db.ParkedVehicles.Include(p => p.Owner).Include(p => p.Vehicle);
-
             var parkedVehicles = new ParkedVehicleRepository().GetAllParkedVehiclesOrderByParkingSpot();
+
+            // Store viewbag for us in partial view
+            ViewBag.ToComboVehicleType = new VehicleTypeRepository().GetAll();
+            ((List<VehicleTypeListItem>)ViewBag.ToComboVehicleType).Insert(0, new VehicleTypeListItem { VehicleTypeID = -1, Name = "<Not in list>" });
+
+
+            var searchForm = (SearchForm)TempData["SearchForm"];
+            if (searchForm != null)
+            {
+                if (!String.IsNullOrEmpty(searchForm.LicensePlate))
+                {
+                    parkedVehicles = parkedVehicles.Where(o => o.Vehicle.LicencePlate.ToLower() == searchForm.LicensePlate.ToLower());
+                }
+
+                if (searchForm.VehicleTypeID != -1)
+                {
+                    parkedVehicles = parkedVehicles.Where(o => o.Vehicle.VehicleTypeID == searchForm.VehicleTypeID);
+                }
+            }
             return View(parkedVehicles.ToList());
+        }
+
+        public ActionResult SearchFormPartialView() {
+
+            //ViewBag.ToComboVehicleType = new VehicleTypeRepository().GetAll();
+            //((List<VehicleTypeListItem>)ViewBag.ToComboVehicleType).Insert(0, new VehicleTypeListItem { VehicleTypeID = -1, Name = "<Not in list>" });
+
+            return PartialView(new SearchForm());
+        }
+
+        [HttpPost]
+        public ActionResult SearchFormPartialView_Update(SearchForm searchForm)
+        {
+            //return Content("We are here !!! " + searchForm.LicensePlate);
+
+            TempData["SearchForm"] = searchForm;
+
+            return RedirectToAction("Index");
         }
 
         // GET: ParkedVehicles/Details/5

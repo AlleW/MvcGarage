@@ -11,7 +11,7 @@ namespace MvcGarageGroup.CommonFunctions
             public override bool IsValid(object value)
             {
                 DateTime dt;
-                bool parsed = DateTime.TryParse((string)value, out dt);
+                bool parsed = DateTime.TryParse(Convert.ToString(value), out dt);
                 if (!parsed)
                     return false;
 
