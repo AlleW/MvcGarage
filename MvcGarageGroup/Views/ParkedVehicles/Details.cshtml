@@ -1,0 +1,66 @@
+﻿@model MvcGarageGroup.Models.ParkedVehicle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ParkedVehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner.SSN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner.SSN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkingSpotID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParkingSpotID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Present)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Present)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StopTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StopTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ParkedVehicleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

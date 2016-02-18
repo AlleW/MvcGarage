@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MvcGarageGroup.Models.ParkedVehicle>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Our Garage</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkingSpotID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vehicle.LicencePlate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vehicle.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Present)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StopTime)
+        </th>
+        <th>
+            Overdue
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParkingSpotID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle.LicencePlate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Present)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StopTime)
+        </td>
+        <td>
+            @{
+
+            var overdue = (DateTime.Now - (DateTime)item.StopTime).TotalHours;
+            Html.Raw(overdue);
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ParkedVehicleID }) | &nbsp;
+            @Html.ActionLink("Info", "Details", new { id=item.ParkedVehicleID }) | &nbsp;
+            @Html.ActionLink("Unpark", "Delete", new { id = item.ParkedVehicleID }) 
+        </td>
+    </tr>
+}
+
+</table>

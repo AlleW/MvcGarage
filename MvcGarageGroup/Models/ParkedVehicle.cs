@@ -19,7 +19,7 @@ namespace MvcGarageGroup.Models
         [ForeignKey("Vehicle")]
         public virtual int VehicleID { get; set; }
 
-        [Display(Name = "ParkingSpot")]
+        [Display(Name = "Parking Spot")]
         public Enumerators.ParkingSpot ParkingSpotID { get; set; }
 
         [Display(Name = "Owner")]
@@ -27,7 +27,13 @@ namespace MvcGarageGroup.Models
         public virtual int OwnerID { get; set; }
 
         public bool Present { get; set; }
+
+        [Display(Name = "Parked")]
+        [MvcGarageGroup.CommonFunctions.MyAwesomeDateValidation(ErrorMessage = "You were born in another dimension")]
         public DateTime StartTime { get; set; }
+
+        [Display(Name = "Exit Time")]
+        [MvcGarageGroup.CommonFunctions.MyAwesomeDateValidation(ErrorMessage = "You were born in another dimension")]
         public DateTime? StopTime { get; set; }
 
         //[NotMapped]

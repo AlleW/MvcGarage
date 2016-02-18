@@ -21,7 +21,6 @@ namespace MvcGarageGroup.DAL
             // Include Vehicle and Owner objects into each ParkedVehicle
             foreach (var parkedVehicle in listOfParkedVehicles)
             {
-
                 // Get owner by OwnerID
                 parkedVehicle.Owner = new OwnerRepository().GetOwnerByOwnerID(parkedVehicle.OwnerID);
 

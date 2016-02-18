@@ -1,4 +1,5 @@
-﻿using MvcGarageGroup.DAL;
+﻿using MvcGarage.CommonFunctions;
+using MvcGarageGroup.DAL;
 using MvcGarageGroup.Models;
 using System;
 using System.Collections.Generic;
@@ -63,7 +64,9 @@ namespace MvcGarageGroup.Controllers
 
             new ParkedVehicleRepository().AddParkVehicle(Item1);
 
-            return Content("Test Spara !!! " + Item1.VehicleID + " " + Item1.OwnerID + " " + (int)Item3.VehicleTypeID + " " + (int)Item1.ParkingSpotID);
+            ViewBag.SaveReultMessage = "You have perked your vehicle ! on " + ((Enumerators.ParkingSpot)Item1.ParkingSpotID).ToString();
+
+            return RedirectToAction("Index", "ParkedVehicles");
         }
     }
 }

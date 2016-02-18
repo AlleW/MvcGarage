@@ -158,10 +158,12 @@
     <None Include="App_Start\IdentityConfig.cs.old" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <None Include="App_Start\Startup.Auth.cs.old" />
+    <Compile Include="CommonFunctions\MyAwesomeDateValidation.cs" />
     <Compile Include="CommonFunctions\Enumerators.cs" />
     <None Include="Controllers\AccountController.cs.old" />
     <Compile Include="Controllers\HomeController.cs" />
     <None Include="Controllers\ManageController.cs.old" />
+    <Compile Include="Controllers\ParkedVehiclesController.cs" />
     <Compile Include="Controllers\ParkVehicleController.cs" />
     <Compile Include="DAL\IOwnerRepository.cs" />
     <Compile Include="DAL\IParkedVehicleRepository.cs" />
@@ -194,6 +196,11 @@
     <Content Include="App_Data\aspnet-MvcGarage-20160211095349_log.ldf" />
     <Content Include="Content\Garage.css" />
     <Content Include="Views\ParkVehicle\Index.cshtml" />
+    <Content Include="Views\ParkedVehicles\Create.cshtml" />
+    <Content Include="Views\ParkedVehicles\Delete.cshtml" />
+    <Content Include="Views\ParkedVehicles\Details.cshtml" />
+    <Content Include="Views\ParkedVehicles\Edit.cshtml" />
+    <Content Include="Views\ParkedVehicles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

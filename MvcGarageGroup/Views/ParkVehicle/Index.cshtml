@@ -8,10 +8,23 @@
 }
 
 <h2>@ViewBag.Message</h2>
+
+<h4>@ViewBag.SaveReultMessage</h4>
+
 @using (Ajax.BeginForm("Save", "ParkVehicle", options, htmlAttributes: new { @id = "update-form" }))
 {
 <div class="InputForm">
  
+        <div class="inputfields">
+
+            <div class="inputLabel">
+                @Html.LabelFor(model => model.Item1.Present)
+            </div>
+            <div class="inputCheckBox">
+                @Html.CheckBoxFor(model => model.Item1.Present, new { @Checked = "Checked" })
+            </div>
+        </div>
+
         <div class="inputfields">
             <div class="inputLabel">
                 @Html.LabelFor(model => model.Item1.VehicleID)
@@ -44,11 +57,11 @@
                 <div class="inputLabel">
                     @Html.LabelFor(model => model.Item3.VehicleTypeID)
                 </div>
-       
+
                 <div class="inputDropDown">
                     @*@Html.DropDownListFor(model => model.Item3.VehicleTypeID,
-                                            EnumHelper.GetSelectList(typeof(MvcGarage.CommonFunctions.Enumerators.VehicleType)),
-                                            new { @class = "inputDropDownList" })*@
+                        EnumHelper.GetSelectList(typeof(MvcGarage.CommonFunctions.Enumerators.VehicleType)),
+                        new { @class = "inputDropDownList" })*@
                     @Html.DropDownListFor(model => model.Item3.VehicleTypeID, ((List<MvcGarageGroup.Models.VehicleTypeListItem>)ViewBag.ToComboVehicleType).Select(item => new SelectListItem
                 {
                     Value = item.VehicleTypeID.ToString(),
@@ -101,8 +114,8 @@
 
             <div class="inputDropDown">
                 @*@Html.DropDownListFor(model => model.Item1.ParkingSpotID,
-                                            EnumHelper.GetSelectList(typeof(MvcGarage.CommonFunctions.Enumerators.ParkingSpot)),
-                                            new { @class = "inputDropDownList" })*@
+                    EnumHelper.GetSelectList(typeof(MvcGarage.CommonFunctions.Enumerators.ParkingSpot)),
+                    new { @class = "inputDropDownList" })*@
                 @Html.DropDownListFor(model => model.Item1.ParkingSpotID, ((List<MvcGarageGroup.Models.ParkingSpotListItem>)ViewBag.ToVacantParkingSpots).Select(item => new SelectListItem
                 {
                     Value = item.ParkingSpotID.ToString(),
@@ -110,7 +123,7 @@
                 }),
                 new { @class = "inputDropDownList" })
 
-   
+
             </div>
 
             <div class="inputLabel">
@@ -133,15 +146,15 @@
         </div>
 
 
-    <div class="CommitField">
-        <button type="submit" class="button">Save</button>
-     </div>
+        <div class="CommitField">
+            <button type="submit" class="button">Save</button>
+        </div>
 
-            @*<div class="CommitField">
-                    @Html.ActionLink("Save", "Save", "ParkVehicle", new { @class = "btn btn-primary", @style = "color:white" })
+        @*<div class="CommitField">
+                @Html.ActionLink("Save", "Save", "ParkVehicle", new { @class = "btn btn-primary", @style = "color:white" })
 
-                </div>*@
-   
-       </div>
+            </div>*@
+
+    </div>
    }
 
