@@ -190,6 +190,8 @@
     <Compile Include="Models\VehicleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Content Include="App_Data\aspnet-MvcGarage-20160211095349.mdf" />
+    <Content Include="App_Data\aspnet-MvcGarage-20160211095349_log.ldf" />
     <Content Include="Content\Garage.css" />
     <Content Include="Views\ParkVehicle\Index.cshtml" />
   </ItemGroup>
@@ -256,9 +258,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
