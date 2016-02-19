@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<MvcGarageGroup.Models.ParkedVehicle>
 
-@{
-    ViewBag.Title = "Index";
-}
-
 <h2>Our Garage</h2>
 
 @{
     ViewBag.Title = "View";
     AjaxOptions options = new AjaxOptions { };
+    var searchForm = new MvcGarageGroup.Models.SearchForm();
+    searchForm.ViewName = "Index";
 }
 
 <h2>@ViewBag.Message</h2>
@@ -23,7 +21,7 @@
         @Html.LabelFor(model => model.SearchForm.LicensePlate)
     </div>
 }*@
-@Html.Partial("SearchFormPartialView",  new MvcGarageGroup.Models.SearchForm());
+@Html.Partial("SearchFormPartialView", @searchForm);
 
         <table class="table">
             <tr>

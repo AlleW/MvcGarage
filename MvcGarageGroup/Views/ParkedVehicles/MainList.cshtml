@@ -1,0 +1,119 @@
+﻿@model IEnumerable<MvcGarageGroup.Models.ParkedVehicle>
+    @using MvcGarage.CommonFunctions
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Main List</h2>
+
+@{
+    ViewBag.Title = "View";
+    AjaxOptions options = new AjaxOptions { };
+    var searchForm = new MvcGarageGroup.Models.SearchForm();
+    searchForm.ViewName = "MainList";
+
+}
+
+<h2>@ViewBag.Message</h2>
+
+
+@Html.Partial("SearchFormPartialView",  searchForm);
+
+        <table class="table">
+            <tr>
+                <th>
+                    @*▲▼*@
+
+
+                    @Html.DisplayNameFor(model => model.ParkingSpotID)
+                    &nbsp;
+                    @Html.ActionLink("▲", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.ParkingSpot}, null)
+                    @Html.ActionLink("▼", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.ParkingSpotDesc}, null)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicle.LicencePlate)
+                    &nbsp;
+                    @Html.ActionLink("▲", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.LicencePlate}, null)
+                    @Html.ActionLink("▼", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.LicencePlateDesc}, null)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicle.Color)
+                    &nbsp;
+                    @Html.ActionLink("▲", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.Color}, null)
+                    @Html.ActionLink("▼", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.ColorDesc}, null)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicle.VehicleTypeID)
+                    &nbsp;
+                    @Html.ActionLink("▲", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.VehicleType}, null)
+                    @Html.ActionLink("▼", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.VehicleTypeDesc}, null)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Owner.SSN)
+                    &nbsp;
+                    @Html.ActionLink("▲", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.SSN}, null)
+                    @Html.ActionLink("▼", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.SSNDesc}, null)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Owner.Name)
+                    &nbsp;
+                    @Html.ActionLink("▲", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.Name}, null)
+                    @Html.ActionLink("▼", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.NameDesc}, null)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Present)
+                    &nbsp;
+                    @Html.ActionLink("▲", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.Present}, null)
+                    @Html.ActionLink("▼", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.PresentDesc}, null)
+                </th>
+                 <th>
+                    @Html.DisplayNameFor(model => model.StartTime)
+                     &nbsp;
+                     @Html.ActionLink("▲", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.StartTime}, null)
+                     @Html.ActionLink("▼", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.StartTimeDesc}, null)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StopTime)
+                    &nbsp;
+                    @Html.ActionLink("▲", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.StopTime}, null)
+                    @Html.ActionLink("▼", "MainList", "ParkedVehicles", new {id = (int)Enumerators.MainListSortFields.StopTimeDesc}, null)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ParkingSpotID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle.LicencePlate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle.Color)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vehicle.VehicleType.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner.SSN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Present)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StopTime)
+                    </td>
+                   
+                </tr>
+                }
+
+        </table>

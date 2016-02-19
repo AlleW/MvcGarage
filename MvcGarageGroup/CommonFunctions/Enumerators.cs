@@ -16,6 +16,7 @@ namespace MvcGarage.CommonFunctions
             Lorry = 5
         }
 
+        // MvcGarage.CommonFunctions.Enumerators.ParkingSpot
         public enum ParkingSpot
         {
             A1 = 101,
@@ -56,6 +57,28 @@ namespace MvcGarage.CommonFunctions
             C10 = 310,
             C11 = 311,
             C12 = 312
+        }
+
+        public enum MainListSortFields
+        {
+            ParkingSpotDesc = 1,
+            LicencePlateDesc = 2,
+            ColorDesc = 3,
+            VehicleTypeDesc = 4,
+            SSNDesc = 5,
+            NameDesc = 6,
+            PresentDesc = 7,
+            StartTimeDesc = 8,
+            StopTimeDesc = 9,
+            ParkingSpot = 11,
+            LicencePlate = 12,
+            Color = 13,
+            VehicleType = 14,
+            SSN = 15,
+            Name = 16,
+            Present = 17,
+            StartTime = 18,
+            StopTime = 19
         }
     }
 }

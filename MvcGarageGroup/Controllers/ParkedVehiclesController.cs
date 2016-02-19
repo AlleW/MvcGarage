@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MvcGarageGroup.Models;
 using MvcGarageGroup.DAL;
+using MvcGarage.CommonFunctions;
 
 namespace MvcGarageGroup.Controllers
 {
@@ -42,7 +43,105 @@ namespace MvcGarageGroup.Controllers
             return View(parkedVehicles.ToList());
         }
 
-        public ActionResult SearchFormPartialView() {
+        // GET: ParkedVehicles
+        public ActionResult MainList(int? id)
+        {
+            // var parkedVehicles = db.ParkedVehicles.Include(p => p.Owner).Include(p => p.Vehicle);
+            var parkedVehicles = new ParkedVehicleRepository().GetAllParkedVehiclesOrderByParkingSpot();
+
+            // Store viewbag for us in partial view
+            ViewBag.ToComboVehicleType = new VehicleTypeRepository().GetAll();
+            ((List<VehicleTypeListItem>)ViewBag.ToComboVehicleType).Insert(0, new VehicleTypeListItem { VehicleTypeID = -1, Name = "<Not in list>" });
+
+
+            var searchForm = (SearchForm)TempData["SearchForm"];
+            if (searchForm != null)
+            {
+                if (!String.IsNullOrEmpty(searchForm.LicensePlate))
+                {
+                    parkedVehicles = parkedVehicles.Where(o => o.Vehicle.LicencePlate.ToLower() == searchForm.LicensePlate.ToLower());
+                }
+
+                if (searchForm.VehicleTypeID != -1)
+                {
+                    parkedVehicles = parkedVehicles.Where(o => o.Vehicle.VehicleTypeID == searchForm.VehicleTypeID);
+                }
+            }
+    
+            if (id != null)
+            {
+                //var alle = Enumerators.MainListSortFields;
+
+
+                //Enumerators.MainListSortFields searchField = (Enumerators.MainListSortFields)Enum.Parse(typeof(Enumerators.MainListSortFields), value, true);
+
+                
+
+                
+                switch (id)
+                {
+                    case (int)Enumerators.MainListSortFields.Color:
+                        parkedVehicles = parkedVehicles.OrderBy(o => o.Vehicle.Color);
+                        break;
+                    case (int)Enumerators.MainListSortFields.ColorDesc:
+                        parkedVehicles = parkedVehicles.OrderByDescending(o => o.Vehicle.Color);
+                        break;
+                    case (int)Enumerators.MainListSortFields.LicencePlate:
+                        parkedVehicles = parkedVehicles.OrderBy(o => o.Vehicle.LicencePlate);
+                        break;
+                    case (int)Enumerators.MainListSortFields.LicencePlateDesc:
+                        parkedVehicles = parkedVehicles.OrderByDescending(o => o.Vehicle.LicencePlate);
+                        break;
+                    case (int)Enumerators.MainListSortFields.Name:
+                        parkedVehicles = parkedVehicles.OrderBy(o => o.Owner.Name);
+                        break;
+                    case (int)Enumerators.MainListSortFields.NameDesc:
+                        parkedVehicles = parkedVehicles.OrderByDescending(o => o.Owner.Name);
+                        break;
+                    case (int)Enumerators.MainListSortFields.ParkingSpot:
+                        parkedVehicles = parkedVehicles.OrderBy(o => o.ParkingSpotID);
+                        break;
+                    case (int)Enumerators.MainListSortFields.ParkingSpotDesc:
+                        parkedVehicles = parkedVehicles.OrderByDescending(o => o.ParkingSpotID);
+                        break;
+                    case (int)Enumerators.MainListSortFields.Present:
+                        parkedVehicles = parkedVehicles.OrderBy(o => o.Present);
+                        break;
+                    case (int)Enumerators.MainListSortFields.PresentDesc:
+                        parkedVehicles = parkedVehicles.OrderByDescending(o => o.Present);
+                        break;
+                    case (int)Enumerators.MainListSortFields.SSN:
+                        parkedVehicles = parkedVehicles.OrderBy(o => o.Owner.SSN);
+                        break;
+                    case (int)Enumerators.MainListSortFields.SSNDesc:
+                        parkedVehicles = parkedVehicles.OrderByDescending(o => o.Owner.SSN);
+                        break;
+                    case (int)Enumerators.MainListSortFields.StartTime:
+                        parkedVehicles = parkedVehicles.OrderBy(o => o.StartTime);
+                        break;
+                    case (int)Enumerators.MainListSortFields.StartTimeDesc:
+                        parkedVehicles = parkedVehicles.OrderByDescending(o => o.StartTime);
+                        break;
+                    case (int)Enumerators.MainListSortFields.StopTime:
+                        parkedVehicles = parkedVehicles.OrderBy(o => o.StopTime);
+                        break;
+                    case (int)Enumerators.MainListSortFields.StopTimeDesc:
+                        parkedVehicles = parkedVehicles.OrderByDescending(o => o.StopTime);
+                        break;
+                    case (int)Enumerators.MainListSortFields.VehicleType:
+                        parkedVehicles = parkedVehicles.OrderBy(o => o.Vehicle.VehicleType.Name);
+                        break;
+                    case (int)Enumerators.MainListSortFields.VehicleTypeDesc:
+                        parkedVehicles = parkedVehicles.OrderByDescending(o => o.Vehicle.VehicleType.Name);
+                        break;
+                }
+
+            }
+            return View(parkedVehicles.ToList());
+        }
+
+        public ActionResult SearchFormPartialView(SearchForm searchForm)
+        {
 
             //ViewBag.ToComboVehicleType = new VehicleTypeRepository().GetAll();
             //((List<VehicleTypeListItem>)ViewBag.ToComboVehicleType).Insert(0, new VehicleTypeListItem { VehicleTypeID = -1, Name = "<Not in list>" });
@@ -53,11 +152,10 @@ namespace MvcGarageGroup.Controllers
         [HttpPost]
         public ActionResult SearchFormPartialView_Update(SearchForm searchForm)
         {
-            //return Content("We are here !!! " + searchForm.LicensePlate);
-
             TempData["SearchForm"] = searchForm;
 
-            return RedirectToAction("Index");
+            return RedirectToAction(searchForm.ViewName);
+            
         }
 
         // GET: ParkedVehicles/Details/5
@@ -115,7 +213,7 @@ namespace MvcGarageGroup.Controllers
                 return HttpNotFound();
             }
             ViewBag.OwnerID = new SelectList(db.Owners, "OwnerID", "SSN", parkedVehicle.OwnerID);
-            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "Color", parkedVehicle.VehicleID);
+            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "LicencePlate", parkedVehicle.Vehicle.LicencePlate);
             return View(parkedVehicle);
         }
 

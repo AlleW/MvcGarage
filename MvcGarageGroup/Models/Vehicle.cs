@@ -19,8 +19,8 @@ namespace MvcGarageGroup.Models
             [ForeignKey("VehicleType")]
             public virtual int VehicleTypeID { get; set; }
 
-            public string Color { get; set; }
             public string LicencePlate { get; set; }
+            public string Color { get; set; }
 
             public virtual VehicleType VehicleType { get; set; }
         }

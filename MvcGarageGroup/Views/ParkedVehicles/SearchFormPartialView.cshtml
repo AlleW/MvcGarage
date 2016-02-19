@@ -7,10 +7,13 @@
 @using (Ajax.BeginForm("SearchFormPartialView_Update", "ParkedVehicle", options, htmlAttributes: new { @id = "update-form" }))
 {
     <div class="inputfields">
+        @*Hidden field to store name of view that implements this partiaal view*@
+        @Html.HiddenFor(model => model.ViewName)
+
         @Html.LabelFor(model => model.LicensePlate, new { @class = "SearchFormLabel" })
-        @Html.TextAreaFor(model => model.LicensePlate, new { @class = "SearchFormTextBox" })
+        @Html.TextBoxFor(model => model.LicensePlate, new { @class = "SearchFormTextBox" })
+
         @Html.LabelFor(model => model.VehicleTypeID, new { @class = "SearchFormLabel" })
-        @*@Html.TextAreaFor(model => model.VehicleTypeID, new { @class = "SearchFormTextBox" })*@
         @Html.DropDownListFor(model => model.VehicleTypeID, ((List<MvcGarageGroup.Models.VehicleTypeListItem>)ViewBag.ToComboVehicleType).Select(item => new SelectListItem
                 {
                     Value = item.VehicleTypeID.ToString(),

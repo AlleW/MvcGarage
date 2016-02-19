@@ -12,5 +12,6 @@ namespace MvcGarageGroup.Models
         public string LicensePlate { get; set; }
         [Display(Name = "Vehicle Type")]
         public int VehicleTypeID { get; set; }
+        public virtual string ViewName { get; set; }
     }
 }
