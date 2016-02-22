@@ -238,22 +238,28 @@ namespace MvcGarageGroup.Controllers
         // GET: ParkedVehicles/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //ParkedVehicle parkedVehicle = db.ParkedVehicles.Find(id);
+            //if (parkedVehicle == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(parkedVehicle);
+            if (id != null) { 
+                ParkedVehicle parkedVehicle = db.ParkedVehicles.Find(id);
+                db.ParkedVehicles.Remove(parkedVehicle);
+                db.SaveChanges();
             }
-            ParkedVehicle parkedVehicle = db.ParkedVehicles.Find(id);
-            if (parkedVehicle == null)
-            {
-                return HttpNotFound();
-            }
-            return View(parkedVehicle);
+            return RedirectToAction("Index");
         }
 
         // POST: ParkedVehicles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id) //NOT USED CHANGED TO ActionResult Delete(int? id)
         {
             ParkedVehicle parkedVehicle = db.ParkedVehicles.Find(id);
             db.ParkedVehicles.Remove(parkedVehicle);
