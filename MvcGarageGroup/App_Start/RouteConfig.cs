@@ -16,7 +16,11 @@ namespace MvcGarageGroup
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "ParkedVehicles", action = "Index", id = UrlParameter.Optional
+                defaults: new
+                {
+                    controller = "VehicleList",
+                    action = "Index",
+                    id = UrlParameter.Optional
                 //    ,
                 //               language = "sv-SE",
                 //culture = "sv-SE"

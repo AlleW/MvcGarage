@@ -88,7 +88,7 @@
 
         </table>
         <div>
-            <div ng-controller="StoreController">
+            @*<div ng-controller="StoreController">
                 <h2>Disas Angular test</h2>
                 <table>
                     <tr ng-repeat="item in items" class="items_list">
@@ -98,5 +98,41 @@
                         <td><i>Other field</i></td>
                     </tr>
                 </table>
+            </div>*@
+
+
+            <div ng-controller="VehicleListController">
+                <form ng-submit="onButtonClick()">
+                    <input type="text" ng-model="SearchText" ng-bind="SearchText" />
+                    @*<input type="submit" value="search" style="margin: 5px" />*@
+                    <h2>Våran Angular test</h2>
+                    <table>
+                        <tr>
+                            <th>Parking Spot</th>
+                            <th>LicencePlate</th>
+                            <th>color</th>
+                            <th>present</th>
+                            <th>Parked</th>
+                            <th>Exit Time</th>
+                            <th>Overdue</th>
+
+                        </tr>
+                        <tr ng-repeat="vehicle in vehicles | filter:SearchText" class="items_list">
+                            <td> {{vehicle.ParkingSpotName}}</td>
+                            <td>{{vehicle.Vehicle.LicencePlate}}</td>
+                            <td>{{vehicle.Vehicle.Color}}</td>
+                            <td> {{vehicle.Present}}</td>
+                            <td>{{vehicle.StartTime.replace('/Date(','').replace(')/','') | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td>{{vehicle.StopTime.replace('/Date(','').replace(')/','') | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td> {{vehicle.Overdue}}</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </form>
             </div>
         </div>
+
+
+
+
+

@@ -7,10 +7,10 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/GarageJS")
+    @Scripts.Render("~/bundles/AngularGarageGroup")
 
 </head>
-<body ng-app ="store">
+<body ng-app="AngularGarageGroup">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -23,9 +23,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "ParkedVehicles")</li>
+                    <li>@Html.ActionLink("Home", "Index", "VehicleList")</li>
                     <li>@Html.ActionLink("ParkVehicle", "Index", "ParkVehicle")</li>
-                    <li>@Html.ActionLink("Main List", "MainList", "ParkedVehicles")</li>
+                    <li>@Html.ActionLink("Main List", "MainList", "VehicleList")</li>
                 </ul>
                 @*@Html.Partial("_LoginPartial")*@
             </div>

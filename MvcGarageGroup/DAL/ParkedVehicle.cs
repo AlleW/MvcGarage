@@ -21,6 +21,15 @@ namespace MvcGarageGroup.DAL
             // Include Vehicle and Owner objects into each ParkedVehicle
             foreach (var parkedVehicle in listOfParkedVehicles)
             {
+                // Get ParkingSpotName
+                parkedVehicle.ParkingSpotName = parkedVehicle.ParkingSpotID.ToString();
+
+                // Get Overdue
+                string result = "";
+                double overdue = (DateTime.Now - (DateTime)parkedVehicle.StopTime).TotalHours;
+                if (overdue > 0) { result = Math.Ceiling(overdue).ToString(); }
+                parkedVehicle.Overdue = result;
+
                 // Get owner by OwnerID
                 parkedVehicle.Owner = new OwnerRepository().GetOwnerByOwnerID(parkedVehicle.OwnerID);
 

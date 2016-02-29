@@ -66,7 +66,7 @@ namespace MvcGarageGroup.Controllers
 
             ViewBag.SaveReultMessage = "You have perked your vehicle ! on " + ((Enumerators.ParkingSpot)Item1.ParkingSpotID).ToString();
 
-            return RedirectToAction("Index", "ParkedVehicles");
+            return RedirectToAction("Index", "VehicleList");
         }
     }
 }

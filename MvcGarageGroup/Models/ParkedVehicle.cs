@@ -43,5 +43,9 @@ namespace MvcGarageGroup.Models
 
         public virtual Vehicle Vehicle { get; set; }
         public virtual Owner Owner { get; set; }
+        [NotMapped]
+        public virtual string ParkingSpotName { get; set; }
+        [NotMapped]
+        public virtual string Overdue { get; set; }
     }
 }

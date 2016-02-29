@@ -12,7 +12,7 @@ using MvcGarage.CommonFunctions;
 
 namespace MvcGarageGroup.Controllers
 {
-    public class ParkedVehiclesController : Controller
+    public class VehicleListController : Controller
     {
         private LibraryContext db = new LibraryContext();
 
@@ -41,6 +41,12 @@ namespace MvcGarageGroup.Controllers
                 }
             }
             return View(parkedVehicles.ToList());
+        }
+
+        public ActionResult AngularRead()
+        {
+
+            return Json( new ParkedVehicleRepository().GetAllParkedVehiclesOrderByParkingSpot().ToList(), JsonRequestBehavior.AllowGet);
         }
 
         // GET: ParkedVehicles
