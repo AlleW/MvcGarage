@@ -24,7 +24,11 @@ namespace MvcGarageGroup
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                        "~/Scripts/angular*"));
+                        "~/Scripts/angular.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/GarageJS").Include(
+            "~/Scripts/GarageJS.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

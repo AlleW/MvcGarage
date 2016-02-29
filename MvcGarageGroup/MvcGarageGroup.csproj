@@ -196,6 +196,9 @@
     <Content Include="App_Data\aspnet-MvcGarage-20160211095349.mdf" />
     <Content Include="App_Data\aspnet-MvcGarage-20160211095349_log.ldf" />
     <Content Include="Content\Garage.css" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\GarageJS.js" />
     <Content Include="Views\ParkVehicle\Index.cshtml" />
     <Content Include="Views\ParkedVehicles\Create.cshtml" />
     <Content Include="Views\ParkedVehicles\Delete.cshtml" />

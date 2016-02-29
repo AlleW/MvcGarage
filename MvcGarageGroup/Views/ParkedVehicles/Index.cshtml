@@ -87,3 +87,16 @@
 }
 
         </table>
+        <div>
+            <div ng-controller="StoreController">
+                <h2>Disas Angular test</h2>
+                <table>
+                    <tr ng-repeat="item in items" class="items_list">
+                        <td> {{item.Name}} -</td>
+                        <td>{{item.Price}} -</td>
+                        <td ng-show="show_desc">{{item.Description}} -</td>
+                        <td><i>Other field</i></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
